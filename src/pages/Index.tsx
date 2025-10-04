@@ -42,19 +42,6 @@ const Index = () => {
     }
   };
 
-  useEffect(() => {
-    if (!showCarousel) return;
-
-    const interval = setInterval(() => {
-      setFadeState('out');
-      setTimeout(() => {
-        setCurrentPhrase((prev) => (prev + 1) % phrases.length);
-        setFadeState('in');
-      }, 500);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [showCarousel, phrases.length]);
   const solutions = [
     {
       icon: Brain,
@@ -91,9 +78,9 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Logo Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 py-8">
+      <header className="fixed top-0 left-0 right-0 z-50 py-8 bg-black">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-7xl font-playfair font-bold tracking-widest text-accent">
+          <h1 className="text-5xl md:text-7xl font-cormorant font-bold tracking-widest text-accent">
             DE MORAIS<span className="text-red-600">.</span>
           </h1>
         </div>
@@ -143,7 +130,7 @@ const Index = () => {
             </div>
           ) : (
             <div className={`max-w-4xl mx-auto text-center space-y-8 transition-opacity duration-500 ${fadeState === 'in' ? 'opacity-100' : 'opacity-0'}`}>
-              <p className="text-2xl md:text-4xl text-foreground leading-relaxed font-light">
+              <p className="text-2xl md:text-4xl text-foreground leading-relaxed font-cormorant font-medium">
                 {phrases[currentPhrase]}
               </p>
               <Button 
@@ -317,7 +304,7 @@ const Index = () => {
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-3 gap-12 mb-12">
               <div>
-                <h3 className="text-2xl font-bold bg-gradient-premium bg-clip-text text-transparent mb-4">
+                <h3 className="text-2xl font-cormorant font-bold bg-gradient-premium bg-clip-text text-transparent mb-4">
                   DE MORAIS<span className="text-red-600">.</span>
                 </h3>
                 <p className="text-muted-foreground text-sm">
