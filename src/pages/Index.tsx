@@ -23,6 +23,25 @@ const Index = () => {
     setShowCarousel(true);
   };
 
+  const handleNext = () => {
+    if (currentPhrase < phrases.length - 1) {
+      setFadeState('out');
+      setTimeout(() => {
+        setCurrentPhrase((prev) => prev + 1);
+        setFadeState('in');
+      }, 500);
+    } else {
+      // Scroll to solutions section
+      const solutionsSection = document.getElementById('solutions-section');
+      solutionsSection?.scrollIntoView({ behavior: 'smooth' });
+      // Reset carousel
+      setTimeout(() => {
+        setShowCarousel(false);
+        setCurrentPhrase(0);
+      }, 1000);
+    }
+  };
+
   useEffect(() => {
     if (!showCarousel) return;
 
@@ -72,10 +91,10 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Logo Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 py-6">
-        <div className="container mx-auto px-4">
-          <h1 className="text-3xl md:text-4xl font-bold tracking-wider text-accent">
-            DE MORAIS
+      <header className="fixed top-0 left-0 right-0 z-50 py-8">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-7xl font-playfair font-bold tracking-widest text-accent">
+            DE MORAIS<span className="text-red-600">.</span>
           </h1>
         </div>
       </header>
@@ -123,10 +142,18 @@ const Index = () => {
               </div>
             </div>
           ) : (
-            <div className={`max-w-4xl mx-auto text-center transition-opacity duration-500 ${fadeState === 'in' ? 'opacity-100' : 'opacity-0'}`}>
+            <div className={`max-w-4xl mx-auto text-center space-y-8 transition-opacity duration-500 ${fadeState === 'in' ? 'opacity-100' : 'opacity-0'}`}>
               <p className="text-2xl md:text-4xl text-foreground leading-relaxed font-light">
                 {phrases[currentPhrase]}
               </p>
+              <Button 
+                size="lg" 
+                onClick={handleNext}
+                className="bg-yellow-500 text-black hover:bg-yellow-600 font-bold px-8 py-6"
+              >
+                NEXT
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
             </div>
           )}
         </div>
@@ -138,7 +165,7 @@ const Index = () => {
       </section>
 
       {/* Solutions Grid */}
-      <section className="py-32 relative">
+      <section id="solutions-section" className="py-32 relative">
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
@@ -224,16 +251,8 @@ const Index = () => {
                 10 Erros de Gestão que Impedem o Crescimento
               </p>
               <p className="text-muted-foreground mb-6">
-                Descubra os erros mais comuns que travam o crescimento das empresas e como evitá-los
+                Descubra os erros mais comuns que travam o crescimento das empresas e como evitá-los. Preencha o formulário abaixo para receber.
               </p>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-              >
-                Baixar E-book Grátis
-                <Download className="ml-2 h-5 w-5" />
-              </Button>
             </div>
           </div>
         </div>
@@ -299,7 +318,7 @@ const Index = () => {
             <div className="grid md:grid-cols-3 gap-12 mb-12">
               <div>
                 <h3 className="text-2xl font-bold bg-gradient-premium bg-clip-text text-transparent mb-4">
-                  Growth Business
+                  DE MORAIS<span className="text-red-600">.</span>
                 </h3>
                 <p className="text-muted-foreground text-sm">
                   Crescimento exponencial através de tecnologia e estratégia
@@ -319,14 +338,14 @@ const Index = () => {
               <div>
                 <h4 className="font-semibold mb-4 text-foreground">Contato</h4>
                 <ul className="space-y-2 text-muted-foreground text-sm">
-                  <li className="hover:text-primary transition-colors cursor-pointer">contato@growthbusiness.com</li>
-                  <li className="hover:text-primary transition-colors cursor-pointer">+55 (11) 9999-9999</li>
+                  <li className="hover:text-primary transition-colors cursor-pointer">contato@demorais.xyz</li>
+                  <li className="hover:text-primary transition-colors cursor-pointer">+55 92 99127-6333</li>
                 </ul>
               </div>
             </div>
             
             <div className="pt-8 border-t border-border text-center text-muted-foreground text-sm">
-              <p>&copy; 2024 Growth Business. Todos os direitos reservados.</p>
+              <p>&copy; 2024 DE MORAIS | Soluções Digitais. Todos os direitos reservados.</p>
             </div>
           </div>
         </div>
