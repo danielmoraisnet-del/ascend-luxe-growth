@@ -1,140 +1,160 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, BarChart3, Zap, Target, TrendingUp, Users, Award } from "lucide-react";
+import { ArrowRight, Sparkles, Brain, Rocket, Shield, LineChart, Code } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
 
 const Index = () => {
-  const services = [
+  const solutions = [
     {
-      icon: Zap,
-      title: "Automações",
-      description: "Automatize processos e libere seu tempo para o que realmente importa"
+      icon: Brain,
+      title: "IA & Automação",
+      description: "Inteligência artificial trabalhando 24/7 pelo seu negócio"
     },
     {
-      icon: BarChart3,
-      title: "Sistemas",
-      description: "Soluções tecnológicas personalizadas para escalar seu negócio"
+      icon: Code,
+      title: "Desenvolvimento",
+      description: "Sistemas escaláveis e robustos sob medida"
     },
     {
-      icon: Target,
-      title: "Marketing",
-      description: "Estratégias data-driven para alcançar seu público ideal"
+      icon: LineChart,
+      title: "Growth Marketing",
+      description: "Crescimento acelerado com dados e estratégia"
     },
     {
-      icon: TrendingUp,
-      title: "Tráfego",
-      description: "Aumente sua visibilidade e conversões com campanhas otimizadas"
+      icon: Rocket,
+      title: "Tráfego Pago",
+      description: "ROI otimizado em todas as campanhas"
     },
     {
-      icon: Users,
-      title: "Métricas",
-      description: "Análise completa de dados para decisões estratégicas"
+      icon: Shield,
+      title: "Consultoria",
+      description: "Estratégia personalizada para seu mercado"
     },
     {
-      icon: Award,
-      title: "Growth",
-      description: "Crescimento sustentável e escalável para seu negócio"
+      icon: Sparkles,
+      title: "Otimização",
+      description: "Processos enxutos e alta performance"
     }
   ];
 
-  const benefits = [
-    "Aumento de até 300% em conversões",
-    "Redução de 60% em custos operacionais",
-    "Automação completa de processos manuais",
-    "Dashboards em tempo real",
-    "Integração com suas ferramentas atuais",
-    "Suporte premium dedicado"
-  ];
-
   return (
-    <div className="min-h-screen bg-gradient-hero text-foreground">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div 
-          className="absolute inset-0 z-0 opacity-20"
+          className="absolute inset-0 z-0 opacity-10"
           style={{
             backgroundImage: `url(${heroImage})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         />
-        <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/50 to-background" />
+        <div className="absolute inset-0 z-0 bg-gradient-to-br from-background via-background to-background/50" />
         
-        <div className="container mx-auto px-4 z-10 text-center">
-          <div className="animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-premium bg-clip-text text-transparent">
-              Transforme Dados em
-              <br />
-              Crescimento Exponencial
+        <div className="container mx-auto px-4 z-10">
+          <div className="max-w-5xl mx-auto text-center space-y-8 animate-fade-in">
+            <div className="inline-block">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm">
+                <Sparkles className="h-4 w-4 text-primary" />
+                <span className="text-sm text-primary font-medium">Premium Growth Solutions</span>
+              </div>
+            </div>
+            
+            <h1 className="text-6xl md:text-8xl font-bold tracking-tight">
+              <span className="block text-foreground">Escale Seu</span>
+              <span className="block bg-gradient-premium bg-clip-text text-transparent">Negócio</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-secondary max-w-3xl mx-auto">
-              Soluções premium em automação, sistemas e marketing para empresas que não aceitam menos que a excelência
+            
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
+              Tecnologia de ponta e estratégias data-driven para empresas que buscam crescimento exponencial
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-delayed">
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
               <Button 
                 size="lg" 
-                className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-gold text-lg px-8 py-6 animate-glow-pulse"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-6 shadow-gold"
               >
-                Agendar Consultoria
+                Iniciar Projeto
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-secondary text-secondary hover:bg-secondary/10 text-lg px-8 py-6"
+                className="border-border hover:bg-card text-lg px-8 py-6"
               >
-                Ver Cases
+                Explorar Soluções
               </Button>
             </div>
           </div>
         </div>
+
+        {/* Floating elements */}
+        <div className="absolute top-1/4 left-10 w-2 h-2 rounded-full bg-primary animate-float opacity-60" />
+        <div className="absolute bottom-1/3 right-20 w-3 h-3 rounded-full bg-accent animate-float opacity-40" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 right-1/4 w-2 h-2 rounded-full bg-primary animate-float opacity-50" style={{ animationDelay: '2s' }} />
       </section>
 
-      {/* Services Section */}
-      <section className="py-20 bg-card/30">
+      {/* Solutions Grid */}
+      <section className="py-32 relative">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Soluções <span className="bg-gradient-premium bg-clip-text text-transparent">Premium</span>
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6">
+              Soluções <span className="bg-gradient-premium bg-clip-text text-transparent">Completas</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Tudo que você precisa para acelerar o crescimento do seu negócio
+              Tudo que você precisa para dominar seu mercado
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {solutions.map((solution, index) => (
               <Card 
-                key={index} 
-                className="p-8 bg-gradient-card backdrop-blur-sm border-border hover:border-primary/50 transition-all duration-500 hover:shadow-gold group cursor-pointer"
+                key={index}
+                className="group p-8 bg-card/50 backdrop-blur-sm border-border hover:border-primary/50 transition-all duration-300 hover:shadow-gold cursor-pointer"
               >
-                <service.icon className="h-12 w-12 text-primary mb-4 group-hover:animate-float" />
-                <h3 className="text-2xl font-bold mb-3 text-foreground">{service.title}</h3>
-                <p className="text-muted-foreground">{service.description}</p>
+                <div className="space-y-4">
+                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <solution.icon className="h-7 w-7 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground">{solution.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{solution.description}</p>
+                </div>
               </Card>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-20">
+      {/* Process Section */}
+      <section className="py-32 bg-card/20">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Por Que Escolher a <span className="bg-gradient-premium bg-clip-text text-transparent">Growth Business</span>
-            </h2>
-            <p className="text-xl text-muted-foreground mb-12">
-              Resultados comprovados e tecnologia de ponta para impulsionar seu crescimento
-            </p>
-            
-            <div className="grid md:grid-cols-2 gap-6 text-left">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
-                    <div className="w-2 h-2 rounded-full bg-primary" />
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-20">
+              <h2 className="text-5xl md:text-6xl font-bold mb-6">
+                Processo <span className="bg-gradient-premium bg-clip-text text-transparent">Simples</span>
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                Do primeiro contato aos resultados extraordinários
+              </p>
+            </div>
+
+            <div className="space-y-8">
+              {[
+                { num: "01", title: "Análise", desc: "Entendemos seu negócio, desafios e objetivos" },
+                { num: "02", title: "Estratégia", desc: "Criamos um plano personalizado de crescimento" },
+                { num: "03", title: "Execução", desc: "Implementamos as soluções com excelência" },
+                { num: "04", title: "Otimização", desc: "Medimos, ajustamos e escalamos resultados" }
+              ].map((step, index) => (
+                <div key={index} className="flex gap-6 items-start group">
+                  <div className="flex-shrink-0">
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-premium flex items-center justify-center text-primary-foreground font-bold text-xl">
+                      {step.num}
+                    </div>
                   </div>
-                  <p className="text-foreground">{benefit}</p>
+                  <div className="flex-1 pt-3">
+                    <h3 className="text-2xl font-bold text-foreground mb-2">{step.title}</h3>
+                    <p className="text-muted-foreground text-lg">{step.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -143,60 +163,64 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 border-t border-border">
+      <section className="py-32">
         <div className="container mx-auto px-4">
-          <Card className="p-12 md:p-16 bg-gradient-card backdrop-blur-sm border-primary/30 shadow-gold text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Pronto Para <span className="bg-gradient-premium bg-clip-text text-transparent">Crescer?</span>
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-5xl md:text-7xl font-bold mb-8">
+              Pronto Para
+              <br />
+              <span className="bg-gradient-premium bg-clip-text text-transparent">Decolar?</span>
             </h2>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Agende uma consultoria gratuita e descubra como podemos acelerar seu crescimento
+            <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
+              Agende uma reunião estratégica gratuita e descubra como multiplicar seus resultados
             </p>
             <Button 
               size="lg" 
-              className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-gold text-lg px-12 py-6 animate-glow-pulse"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-gold text-xl px-12 py-8"
             >
-              Falar com Especialista
-              <ArrowRight className="ml-2 h-5 w-5" />
+              Agendar Agora
+              <ArrowRight className="ml-2 h-6 w-6" />
             </Button>
-          </Card>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-border">
+      <footer className="py-16 border-t border-border">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
-            <div>
-              <h3 className="text-2xl font-bold bg-gradient-premium bg-clip-text text-transparent mb-4">
-                Growth Business
-              </h3>
-              <p className="text-muted-foreground">
-                Transformando negócios através de tecnologia e estratégia
-              </p>
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-12 mb-12">
+              <div>
+                <h3 className="text-2xl font-bold bg-gradient-premium bg-clip-text text-transparent mb-4">
+                  Growth Business
+                </h3>
+                <p className="text-muted-foreground text-sm">
+                  Crescimento exponencial através de tecnologia e estratégia
+                </p>
+              </div>
+              
+              <div>
+                <h4 className="font-semibold mb-4 text-foreground">Soluções</h4>
+                <ul className="space-y-2 text-muted-foreground text-sm">
+                  <li className="hover:text-primary transition-colors cursor-pointer">IA & Automação</li>
+                  <li className="hover:text-primary transition-colors cursor-pointer">Desenvolvimento</li>
+                  <li className="hover:text-primary transition-colors cursor-pointer">Marketing</li>
+                  <li className="hover:text-primary transition-colors cursor-pointer">Tráfego</li>
+                </ul>
+              </div>
+              
+              <div>
+                <h4 className="font-semibold mb-4 text-foreground">Contato</h4>
+                <ul className="space-y-2 text-muted-foreground text-sm">
+                  <li className="hover:text-primary transition-colors cursor-pointer">contato@growthbusiness.com</li>
+                  <li className="hover:text-primary transition-colors cursor-pointer">+55 (11) 9999-9999</li>
+                </ul>
+              </div>
             </div>
             
-            <div>
-              <h4 className="font-semibold mb-4 text-foreground">Soluções</h4>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>Automações</li>
-                <li>Sistemas</li>
-                <li>Marketing</li>
-                <li>Tráfego</li>
-              </ul>
+            <div className="pt-8 border-t border-border text-center text-muted-foreground text-sm">
+              <p>&copy; 2024 Growth Business. Todos os direitos reservados.</p>
             </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4 text-foreground">Contato</h4>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>contato@growthbusiness.com</li>
-                <li>+55 (11) 9999-9999</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="pt-8 border-t border-border text-center text-muted-foreground">
-            <p>&copy; 2024 Growth Business. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
