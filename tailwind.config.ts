@@ -108,7 +108,7 @@ export default {
       },
       boxShadow: {
         'gold': 'var(--shadow-gold)',
-        'purple': 'var(--shadow-purple)',
+        'silver': 'var(--shadow-silver)',
         'elegant': 'var(--shadow-elegant)',
       },
     },

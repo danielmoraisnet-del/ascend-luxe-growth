@@ -37,13 +37,6 @@ const Index = () => {
     }
   ];
 
-  const stats = [
-    { value: "500+", label: "Projetos Entregues" },
-    { value: "98%", label: "Satisfação" },
-    { value: "5x", label: "ROI Médio" },
-    { value: "24/7", label: "Suporte" }
-  ];
-
   const benefits = [
     "Aumento de até 300% em conversões",
     "Redução de 60% em custos operacionais",
@@ -97,22 +90,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 border-t border-border">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="text-4xl md:text-5xl font-bold bg-gradient-premium bg-clip-text text-transparent mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-muted-foreground">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Services Section */}
       <section className="py-20 bg-card/30">
         <div className="container mx-auto px-4">
@@ -143,55 +120,23 @@ const Index = () => {
       {/* Benefits Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                Por Que Escolher a <span className="bg-gradient-premium bg-clip-text text-transparent">Growth Business</span>
-              </h2>
-              <p className="text-xl text-muted-foreground mb-8">
-                Resultados comprovados e tecnologia de ponta para impulsionar seu crescimento
-              </p>
-              
-              <div className="space-y-4">
-                {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
-                      <div className="w-2 h-2 rounded-full bg-primary" />
-                    </div>
-                    <p className="text-foreground">{benefit}</p>
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Por Que Escolher a <span className="bg-gradient-premium bg-clip-text text-transparent">Growth Business</span>
+            </h2>
+            <p className="text-xl text-muted-foreground mb-12">
+              Resultados comprovados e tecnologia de ponta para impulsionar seu crescimento
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-6 text-left">
+              {benefits.map((benefit, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-2 h-2 rounded-full bg-primary" />
                   </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="relative">
-              <Card className="p-8 bg-gradient-card backdrop-blur-sm border-accent/30 shadow-purple">
-                <div className="space-y-6">
-                  <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
-                      <TrendingUp className="h-8 w-8 text-primary" />
-                    </div>
-                    <div>
-                      <div className="text-3xl font-bold text-primary">+300%</div>
-                      <div className="text-muted-foreground">Crescimento Médio</div>
-                    </div>
-                  </div>
-                  
-                  <div className="h-px bg-border" />
-                  
-                  <p className="text-muted-foreground italic">
-                    "A Growth Business transformou completamente nossa operação. Em 6 meses, triplicamos nosso faturamento com as automações e estratégias implementadas."
-                  </p>
-                  
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-secondary/20" />
-                    <div>
-                      <div className="font-semibold text-foreground">CEO, Tech Startup</div>
-                      <div className="text-sm text-muted-foreground">Cliente Premium</div>
-                    </div>
-                  </div>
+                  <p className="text-foreground">{benefit}</p>
                 </div>
-              </Card>
+              ))}
             </div>
           </div>
         </div>
