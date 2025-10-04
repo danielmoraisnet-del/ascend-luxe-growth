@@ -1,9 +1,41 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Sparkles, Brain, Rocket, Shield, LineChart, Code } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { ArrowRight, Sparkles, Brain, Rocket, Shield, LineChart, Code, Play, Download } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
+import { useState, useEffect } from "react";
 
 const Index = () => {
+  const [showCarousel, setShowCarousel] = useState(false);
+  const [currentPhrase, setCurrentPhrase] = useState(0);
+  const [fadeState, setFadeState] = useState<'in' | 'out'>('in');
+
+  const phrases = [
+    "Growth Business é a união de estratégia, tecnologia e dados para transformar empresas em potências escaláveis.",
+    "No mercado atual, quem não escala fica para trás. Métodos de crescimento acelerado são essenciais para se manter competitivo.",
+    "Dar o máximo hoje é construir os resultados que todos irão admirar amanhã.",
+    "DE MORAIS, é a confiança no alicerce que transforma parcerias em crescimento real.",
+    "A hora de evoluir é agora. Seu negócio merece mais."
+  ];
+
+  const handleStart = () => {
+    setShowCarousel(true);
+  };
+
+  useEffect(() => {
+    if (!showCarousel) return;
+
+    const interval = setInterval(() => {
+      setFadeState('out');
+      setTimeout(() => {
+        setCurrentPhrase((prev) => (prev + 1) % phrases.length);
+        setFadeState('in');
+      }, 500);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [showCarousel, phrases.length]);
   const solutions = [
     {
       icon: Brain,
@@ -39,6 +71,15 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      {/* Logo Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 py-6">
+        <div className="container mx-auto px-4">
+          <h1 className="text-3xl md:text-4xl font-bold tracking-wider text-accent">
+            DE MORAIS
+          </h1>
+        </div>
+      </header>
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div 
@@ -52,40 +93,42 @@ const Index = () => {
         <div className="absolute inset-0 z-0 bg-gradient-to-br from-background via-background to-background/50" />
         
         <div className="container mx-auto px-4 z-10">
-          <div className="max-w-5xl mx-auto text-center space-y-8 animate-fade-in">
-            <div className="inline-block">
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm">
-                <Sparkles className="h-4 w-4 text-primary" />
-                <span className="text-sm text-primary font-medium">Premium Growth Solutions</span>
+          {!showCarousel ? (
+            <div className={`max-w-5xl mx-auto text-center space-y-8 transition-opacity duration-500 ${showCarousel ? 'opacity-0' : 'opacity-100 animate-fade-in'}`}>
+              <div className="inline-block">
+                <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm">
+                  <Sparkles className="h-4 w-4 text-primary" />
+                  <span className="text-sm text-primary font-medium">Premium Growth Solutions</span>
+                </div>
+              </div>
+              
+              <h2 className="text-6xl md:text-8xl font-bold tracking-tight">
+                <span className="block text-foreground">Escale Seu</span>
+                <span className="block bg-gradient-premium bg-clip-text text-transparent">Negócio</span>
+              </h2>
+              
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
+                Tecnologia de ponta e estratégias data-driven para empresas que buscam crescimento exponencial
+              </p>
+              
+              <div className="pt-8">
+                <Button 
+                  size="lg" 
+                  onClick={handleStart}
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-6 shadow-gold"
+                >
+                  START
+                  <Play className="ml-2 h-5 w-5 fill-current" />
+                </Button>
               </div>
             </div>
-            
-            <h1 className="text-6xl md:text-8xl font-bold tracking-tight">
-              <span className="block text-foreground">Escale Seu</span>
-              <span className="block bg-gradient-premium bg-clip-text text-transparent">Negócio</span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
-              Tecnologia de ponta e estratégias data-driven para empresas que buscam crescimento exponencial
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-              <Button 
-                size="lg" 
-                className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-6 shadow-gold"
-              >
-                Iniciar Projeto
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-border hover:bg-card text-lg px-8 py-6"
-              >
-                Explorar Soluções
-              </Button>
+          ) : (
+            <div className={`max-w-4xl mx-auto text-center transition-opacity duration-500 ${fadeState === 'in' ? 'opacity-100' : 'opacity-0'}`}>
+              <p className="text-2xl md:text-4xl text-foreground leading-relaxed font-light">
+                {phrases[currentPhrase]}
+              </p>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Floating elements */}
@@ -162,25 +205,89 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-32">
+      {/* E-book Offer Section */}
+      <section className="py-20 bg-card/20">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-5xl md:text-7xl font-bold mb-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Pronto Para
               <br />
               <span className="bg-gradient-premium bg-clip-text text-transparent">Decolar?</span>
             </h2>
-            <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
-              Agende uma reunião estratégica gratuita e descubra como multiplicar seus resultados
-            </p>
-            <Button 
-              size="lg" 
-              className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-gold text-xl px-12 py-8"
-            >
-              Agendar Agora
-              <ArrowRight className="ml-2 h-6 w-6" />
-            </Button>
+            
+            <div className="my-12 p-8 rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/5 to-transparent backdrop-blur-sm">
+              <Download className="h-12 w-12 text-primary mx-auto mb-4" />
+              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">
+                E-book Gratuito
+              </h3>
+              <p className="text-xl text-primary mb-6">
+                10 Erros de Gestão que Impedem o Crescimento
+              </p>
+              <p className="text-muted-foreground mb-6">
+                Descubra os erros mais comuns que travam o crescimento das empresas e como evitá-los
+              </p>
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+              >
+                Baixar E-book Grátis
+                <Download className="ml-2 h-5 w-5" />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section with Form */}
+      <section className="py-32">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto">
+            <div className="text-center mb-12">
+              <p className="text-xl text-muted-foreground mb-8">
+                Agende uma reunião estratégica gratuita e descubra como multiplicar seus resultados
+              </p>
+            </div>
+
+            <form className="space-y-6 mb-12">
+              <div className="grid md:grid-cols-2 gap-6">
+                <Input 
+                  placeholder="Nome"
+                  className="bg-card/50 border-border"
+                />
+                <Input 
+                  type="email"
+                  placeholder="Email"
+                  className="bg-card/50 border-border"
+                />
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <Input 
+                  placeholder="WhatsApp"
+                  className="bg-card/50 border-border"
+                />
+                <Input 
+                  placeholder="Área de Atuação"
+                  className="bg-card/50 border-border"
+                />
+              </div>
+
+              <Textarea 
+                placeholder="O que você deseja hoje?"
+                className="bg-card/50 border-border min-h-[120px]"
+              />
+            </form>
+
+            <div className="text-center">
+              <Button 
+                size="lg" 
+                className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-gold text-xl px-12 py-8 w-full md:w-auto"
+              >
+                Agendar Agora
+                <ArrowRight className="ml-2 h-6 w-6" />
+              </Button>
+            </div>
           </div>
         </div>
       </section>
